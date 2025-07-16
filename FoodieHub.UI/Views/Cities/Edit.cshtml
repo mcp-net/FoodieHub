@@ -1,0 +1,46 @@
+﻿@model FoodieHub.UI.Models.CityDto
+
+@{
+    ViewData["Title"] = "Edit City";
+}
+
+<h1 class="mt-3">Edit City</h1>
+
+@if (Model != null)
+{
+    <form method="post" class="mt-3">
+        <div class="mb-3">
+            <label asp-for="Id" class="form-label">ID</label>
+            <input asp-for="Id" class="form-control" readonly />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Code" class="form-label">Code</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="CityImageUrl" class="form-label">City Image URL</label>
+            <input asp-for="CityImageUrl" class="form-control" />
+            <span asp-validation-for="CityImageUrl" class="text-danger"></span>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-danger" asp-controller="Cities" asp-action="Delete">Delete</button>
+        </div>
+    </form>
+}
+
+<div class="mt-3">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

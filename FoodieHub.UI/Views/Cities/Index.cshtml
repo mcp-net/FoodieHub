@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FoodieHub.UI.Models.CityDto>
+
+@{
+    ViewData["Title"] = "Cities";
+}
+
+<h1 class="mt-3">Cities</h1>
+
+<div class="d-flex justify-content-end">
+    <a class="btn btn-secondary" asp-controller="Cities" asp-action="Add">Add City</a>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Code)</td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>
+                    <a asp-controller="Cities" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-light">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
